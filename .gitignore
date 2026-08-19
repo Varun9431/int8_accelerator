@@ -1,0 +1,7 @@
+# Ignore Vivado build directories and temporary files
+build/
+*.jou
+*.log
+*.str
+*.pb
+.Xil/
