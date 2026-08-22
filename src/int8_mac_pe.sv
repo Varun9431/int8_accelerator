@@ -4,6 +4,7 @@ module int8_mac_pe (
     input  logic        clk,
     input  logic        rst,     // Synchronous reset
     input  logic        en,      // Clock enable
+    input  logic        clr_acc,        // Clear accumulator
     input  logic signed [7:0]  a,       // 8-bit signed weight/activation
     input  logic signed [7:0]  b,       // 8-bit signed weight/activation
     output logic signed [31:0] acc      // 32-bit accumulator output
@@ -29,7 +30,11 @@ module int8_mac_pe (
             m_reg <= a_reg * b_reg;
             
             // Stage 3: Accumulator / Output Register (P-Reg)
-            p_reg <= p_reg + m_reg;
+            if (clr_acc) begin
+                p_reg <= m_reg; // Clear accumulator and load new product
+            end else begin
+                p_reg <= p_reg + m_reg; // Accumulate product
+            end
         end
     end
 
