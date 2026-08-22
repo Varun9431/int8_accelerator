@@ -56,13 +56,12 @@ module tb_matrix_mult_2x2 ();
 
         @(posedge clk);
         clr_acc = 1;
-        display(acc_00, acc_01, acc_10, acc_11); // Display the accumulated results after processing the two products
         
         assert (acc_00 == 17 && acc_01 == 20 && acc_10 == 43 && acc_11 == 50)
-            $info("Test Passed: Accumulated results are correct.");
+            $info("Test Passed: Accumulated results are correct, got (%0d,%0d,%0d,%0d)", acc_00, acc_01, acc_10, acc_11);
         else
             $error("Test Failed: Expected (17,20,43,50), got (%0d,%0d,%0d,%0d)", acc_00, acc_01, acc_10, acc_11);
-
+        
         $finish;
     end
 
