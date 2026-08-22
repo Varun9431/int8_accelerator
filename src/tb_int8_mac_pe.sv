@@ -6,6 +6,7 @@ module tb_int8_mac_pe ();
     logic clk;
     logic rst; 
     logic en; 
+    logic clr_acc;
     logic signed [7:0] a; 
     logic signed [7:0] b; 
     logic signed [31:0] acc;
@@ -15,13 +16,17 @@ module tb_int8_mac_pe ();
         .clk (clk),
         .rst (rst),
         .en  (en),
+        .clr_acc (clr_acc),
         .a   (a),
         .b   (b),
         .acc (acc)
     );
 
     // Clock generation (100 MHz -> 10ns period)
-    initial clk = 0;
+    initial begin
+        clk = 0;
+        clr_acc = 0;
+    end
     always begin
         #5 clk = ~clk;
     end
