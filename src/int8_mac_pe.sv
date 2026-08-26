@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module int8_mac_pe (
+(* use_dsp = "yes" *) module int8_mac_pe (
     input  logic        clk,
     input  logic        rst,     // Synchronous reset
     input  logic        en,      // Clock enable
