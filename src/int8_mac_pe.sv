@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 (* use_dsp = "yes" *) module int8_mac_pe (
     input  logic        clk,
     input  logic        rst,     // Synchronous reset

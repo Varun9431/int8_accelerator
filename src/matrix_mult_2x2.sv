@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 module matrix_mult_2x2 (
     input logic clk,
     input logic rst,
