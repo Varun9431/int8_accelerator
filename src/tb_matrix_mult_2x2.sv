@@ -67,7 +67,7 @@ module tb_matrix_mult_2x2 ();
         repeat(5) @(posedge clk);             
         clr_acc = 0;
 
-        $display("acc_00: %d\n, acc_01: %d\n, acc_10: %d\n, acc_11: %d\n", acc_00, acc_01, acc_10, acc_11);
+        $display("acc_00: %d,\n acc_01: %d,\n acc_10: %d,\n acc_11: %d\n", acc_00, acc_01, acc_10, acc_11);
 
         $finish;
     end
