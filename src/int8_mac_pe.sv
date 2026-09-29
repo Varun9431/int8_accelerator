@@ -5,6 +5,8 @@
     input  logic        clr_acc,        // Clear accumulator
     input  logic signed [7:0]  a,       // 8-bit signed weight/activation
     input  logic signed [7:0]  b,       // 8-bit signed weight/activation
+    output logic signed [7:0] a_out,    // 8-bit signed weight/activation output (systolic)
+    output logic signed [7:0] b_out,    // 8-bit signed weight/activation output (systolic)
     output logic signed [31:0] acc      // 32-bit accumulator output
 );
 
@@ -38,5 +40,7 @@
 
     // Continuous assignment to output port
     assign acc = p_reg;
+    assign a_out = a_reg;
+    assign b_out = b_reg;
 
 endmodule
