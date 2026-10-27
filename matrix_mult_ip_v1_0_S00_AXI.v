@@ -143,18 +143,18 @@ module matrix_mult_ip_v1_0_S00_AXI #
 	end    
 
 	always @( posedge S_AXI_ACLK ) begin
-	  if ( S_AXI_ARESETN == 1'b0 ) begin
-	      axi_bvalid  <= 0;
-	      axi_bresp   <= 2'b0;
-	    end else begin    
-	      if (axi_awready && S_AXI_AWVALID && ~axi_bvalid && axi_wready && S_AXI_WVALID) begin
-	          axi_bvalid <= 1'b1;
-	          axi_bresp  <= 2'b0; 
-	        end else if (S_AXI_BREADY && axi_bvalid) begin
-	              axi_bvalid <= 1 me0; 
-	            end
-	    end
-	end   
+        if ( S_AXI_ARESETN == 1'b0 ) begin
+            axi_bvalid  <= 0;
+            axi_bresp   <= 2'b0;
+        end else begin    
+            if (axi_awready && S_AXI_AWVALID && ~axi_bvalid && axi_wready && S_AXI_WVALID) begin
+                axi_bvalid <= 1'b1;
+                axi_bresp  <= 2'b0; 
+            end else if (S_AXI_BREADY && axi_bvalid) begin
+                    axi_bvalid <= 1'b0; 
+            end
+        end
+    end
 
 	always @( posedge S_AXI_ACLK ) begin
 	  if ( S_AXI_ARESETN == 1'b0 ) begin
