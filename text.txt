@@ -1,0 +1,17 @@
+# 1. Open the IP manifest XML file
+ipx::open_ipxact /home/user/ip_repo/matrix_mult_ip_1.0/component.xml
+
+# 2. Get references to synthesis and simulation file groups
+set fg_syn [ipx::get_file_groups xilinx_anylanguagesynthesis -of_objects [ipx::current_core]]
+set fg_sim [ipx::get_file_groups xilinx_anylanguagebehavioralsimulation -of_objects [ipx::current_core]]
+
+# 3. Register the 3 sub-modules in component.xml
+foreach f {src/matrix_mult_2x2.sv src/int8_mac_pe.sv src/bram_sync.sv} {
+    ipx::add_file $f $fg_syn
+    ipx::add_file $f $fg_sim
+}
+
+# 4. Save and close the IP manifest
+ipx::update_checksums [ipx::current_core]
+ipx::save_core [ipx::current_core]
+ipx::unload_core /home/user/ip_repo/matrix_mult_ip_1.0/component.xml
