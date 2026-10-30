@@ -50,6 +50,11 @@ int main() {
     xil_printf("  [ %d , %d ]\n\n", acc10, acc11);
     xil_printf("========================================\n");
 
+    // 7. Infinite loop prevents termination and keeps UART terminal active
+    while (1) {
+        // Hold active session
+    }
+
     cleanup_platform();
     return 0;
 }
